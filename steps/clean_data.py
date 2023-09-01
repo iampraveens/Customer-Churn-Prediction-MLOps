@@ -3,11 +3,11 @@ import logging
 import pandas as pd
 from typing_extensions import Annotated
 from typing import Tuple
-from zenml import step
+# from zenml import step
 
 from src.data_cleaning import DataCleaning, DataPreProcessStrategy, DataSplitStrategy, DataBalanceStrategy
 
-@step
+# @step
 def clean_df(df: pd.DataFrame) -> Tuple[
     Annotated[pd.DataFrame, "X_train"],
     Annotated[pd.DataFrame, "X_test"],
