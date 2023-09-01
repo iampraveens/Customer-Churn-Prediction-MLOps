@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/../../pipelines"
+    ],
+    "path-intellisense.autoTriggerNextSuggestion": true,
+    "path-intellisense.mappings": {
+
+    }
+}
