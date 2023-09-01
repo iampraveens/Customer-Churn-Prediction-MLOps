@@ -1,8 +1,6 @@
 # import sys
  
 from pipelines.training_pipeline import train_pipeline
-import mlflow
-from urllib.parse import urlparse 
 # sys.path.append("../pipelines") 
 
 if __name__ == "__main__":
