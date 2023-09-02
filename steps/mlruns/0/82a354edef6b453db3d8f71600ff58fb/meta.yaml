@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/0/82a354edef6b453db3d8f71600ff58fb/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 82a354edef6b453db3d8f71600ff58fb
+run_name: suave-sloth-941
+run_uuid: 82a354edef6b453db3d8f71600ff58fb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693677195244
+status: 1
+tags: []
+user_id: sprav

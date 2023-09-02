@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/262131107750482151/88081f00f9be4beeb8afbff609b53be4/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '262131107750482151'
+lifecycle_stage: active
+run_id: 88081f00f9be4beeb8afbff609b53be4
+run_name: illustrious-bat-212
+run_uuid: 88081f00f9be4beeb8afbff609b53be4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693672203607
+status: 1
+tags: []
+user_id: sprav

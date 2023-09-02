@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/0/2c28272c19b742ceb7e33e0e7d2e4bb9/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2c28272c19b742ceb7e33e0e7d2e4bb9
+run_name: resilient-elk-259
+run_uuid: 2c28272c19b742ceb7e33e0e7d2e4bb9
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693667623040
+status: 1
+tags: []
+user_id: sprav

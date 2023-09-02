@@ -1,7 +1,7 @@
 import logging
 
 import pandas as pd
-from zenml import step
+# from zenml import step
 
 class LoadData:
     """
@@ -21,7 +21,7 @@ class LoadData:
         logging.info(f"Loading data from {self.data_path}")
         return pd.read_csv(self.data_path)
 
-@step
+# @step
 def load_df(data_path: str) -> pd.DataFrame:
     """
     Load the data from data_path and convert to a dataframe

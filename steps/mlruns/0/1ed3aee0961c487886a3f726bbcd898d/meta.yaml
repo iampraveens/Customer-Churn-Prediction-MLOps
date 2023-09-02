@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/0/1ed3aee0961c487886a3f726bbcd898d/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 1ed3aee0961c487886a3f726bbcd898d
+run_name: rogue-grouse-801
+run_uuid: 1ed3aee0961c487886a3f726bbcd898d
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693676612438
+status: 1
+tags: []
+user_id: sprav

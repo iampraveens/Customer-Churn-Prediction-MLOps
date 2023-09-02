@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/0/79ac683f863449f89a0c55876da673f7/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 79ac683f863449f89a0c55876da673f7
+run_name: wistful-goat-781
+run_uuid: 79ac683f863449f89a0c55876da673f7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693667550073
+status: 1
+tags: []
+user_id: sprav

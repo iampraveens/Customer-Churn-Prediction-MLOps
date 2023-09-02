@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/0/7e3fc60d8f93408bb74bdeb314089dca/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7e3fc60d8f93408bb74bdeb314089dca
+run_name: beautiful-elk-548
+run_uuid: 7e3fc60d8f93408bb74bdeb314089dca
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693676959699
+status: 1
+tags: []
+user_id: sprav

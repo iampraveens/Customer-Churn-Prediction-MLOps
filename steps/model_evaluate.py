@@ -30,15 +30,14 @@ def evaluate_model(model: ClassifierMixin,
         prediction = model.predict(X_test)
         accuracy_class = Accuracy()
         accuracy = accuracy_class.calculate_scores(y_test, prediction)
+        mlflow.log_metric("accuracy", accuracy)
         
         f1_class = F1Score()
         f1score = f1_class.calculate_scores(y_test, prediction)
+        mlflow.log_metric("f1score", f1score)
         
         recall_class = Recall()
         recall = recall_class.calculate_scores(y_test, prediction)
-        
-        mlflow.log_metric("accuracy", accuracy)
-        mlflow.log_metric("f1score", f1score)
         mlflow.log_metric("recall", recall)
         
         return accuracy, f1score, recall

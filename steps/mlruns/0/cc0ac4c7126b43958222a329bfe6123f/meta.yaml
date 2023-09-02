@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/steps/mlruns/0/cc0ac4c7126b43958222a329bfe6123f/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cc0ac4c7126b43958222a329bfe6123f
+run_name: sneaky-penguin-258
+run_uuid: cc0ac4c7126b43958222a329bfe6123f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693669632451
+status: 1
+tags: []
+user_id: sprav

@@ -7,7 +7,7 @@ from steps.model_evaluate import evaluate_model
 from steps.config import ModelNameConfig
 
 
-# @pipeline(enable_cache=True)
+# @pipeline(enable_cache=False)
 def train_pipeline(data_path: str):
     
     df = load_df(data_path)
