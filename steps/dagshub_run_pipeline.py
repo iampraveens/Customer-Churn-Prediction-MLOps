@@ -12,6 +12,6 @@ if __name__ == "__main__":
         model = train_pipeline(r"C:\Users\sprav\Pictures\Customer Churn Prediction\data\telcoChurn.csv")
         
         if tracking_url_store_type != "file":
-            mlflow.sklearn.log_model(model, "model", registered_model_name="DecisionTreeModel")
+            mlflow.sklearn.log_model(model, "model", registered_model_name="RandomForest")
         else:
             mlflow.sklearn.log_model(model, "model")

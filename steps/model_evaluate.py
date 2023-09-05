@@ -1,7 +1,7 @@
 import logging
 
 import pandas as pd
-# import mlflow
+import mlflow
 # from zenml import step
 # from zenml.client import Client
 from typing import Tuple
@@ -39,9 +39,9 @@ def evaluate_model(model: ClassifierMixin,
         recall_class = Recall()
         recall = recall_class.calculate_scores(y_test, prediction)
         
-        # mlflow.log_metric("accuracy", accuracy)
-        # mlflow.log_metric("f1score", f1score)
-        # mlflow.log_metric("recall", recall)
+        mlflow.log_metric("accuracy", accuracy)
+        mlflow.log_metric("f1score", f1score)
+        mlflow.log_metric("recall", recall)
         
         return accuracy, f1score, recall
     
