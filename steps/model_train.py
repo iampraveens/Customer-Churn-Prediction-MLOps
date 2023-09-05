@@ -4,9 +4,14 @@ import pandas as pd
 import mlflow
 # from zenml import step
 # from zenml.client import Client
-from sklearn.base import ClassifierMixin 
+from sklearn.base import ClassifierMixin
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.tree import DecisionTreeClassifier
+from xgboost import XGBClassifier
 
-from src.model_dev import DecisionTreeClassifier_Model
+from src.model_dev import DecisionTreeClassifier_Model, RandomForestClassifier_Model
+from src.model_dev import GridSearchCV_Model, GradientBoostingClassifier_Model
+from src.model_dev import XGBoost_Model
 from config import ModelNameConfig
 
 # experiment_tracker = Client().active_stack.experiment_tracker
@@ -32,6 +37,40 @@ def train_model(
             model = DecisionTreeClassifier_Model()
             trained_model = model.train(X_train, y_train)
             return trained_model
+
+        elif config.model_name == 'RandomForest':
+            # mlflow.sklearn.autolog()
+            model = RandomForestClassifier_Model()
+            trained_model = model.train(X_train, y_train, 
+                                        criterion='entropy', max_features='sqrt',
+                                        max_depth=10, n_estimators=150, 
+                                        n_jobs=-1, verbose=3)
+            return trained_model
+        
+        elif config.model_name == 'GridSearchCV':
+            # mlflow.sklearn.autolog()
+            model = GridSearchCV_Model()
+            
+            trained_model = model.train(X_train, y_train,
+                                        estimator=XGBClassifier(), scoring='f1',
+                                        cv=5, n_jobs=-1, verbose=3)
+            return trained_model
+        
+        elif config.model_name == 'GradientBoosting':
+            # mlflow.sklearn.autolog()
+            model = GradientBoostingClassifier_Model()
+            trained_model = model.train(X_train, y_train, criterion='squared_error',
+                                        learning_rate=0.3, max_depth=19, max_leaf_nodes=24,
+                                        min_samples_leaf=9, min_samples_split=7, n_estimators=100,
+                                        verbose=3, max_features='sqrt')
+            return trained_model
+        
+        elif config.model_name == 'XGBoost':
+            # mlflow.sklearn.autolog()
+            model = XGBoost_Model()
+            trained_model = model.train(X_train, y_train)
+            return trained_model
+        
         else:
             raise ValueError(f"Model not supported {config.model_name}")
         

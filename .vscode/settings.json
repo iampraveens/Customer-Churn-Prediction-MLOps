@@ -5,5 +5,8 @@
     "path-intellisense.autoTriggerNextSuggestion": true,
     "path-intellisense.mappings": {
 
+    },
+    "[python]": {
+        "editor.showUnused": false,
     }
 }
