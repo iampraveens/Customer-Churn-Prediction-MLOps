@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 import logging
 from typing import Sequence
 import pandas as pd
+import mlflow
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
@@ -43,6 +44,7 @@ class RandomForestClassifier_Model(Model):
             logging.info(f"Model training completed")
             # fim = pd.Series(rf.feature_importances_, index= X_train.columns)
             # print(fim.sort_values(ascending=False))
+            mlflow.log_param('criterion', criterion)
             return rf
         except Exception as e:
             logging.error(f"Error in training model {e}")
