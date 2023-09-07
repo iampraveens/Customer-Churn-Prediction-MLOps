@@ -2,8 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from PIL import Image
-import sys
-sys.path.append("../")
+from pathlib import Path
+
+Path(__file__).parent / "src"
+
 from src.utils import LoadModel
 from pipelines.prediction_pipeline import predict_model 
 
