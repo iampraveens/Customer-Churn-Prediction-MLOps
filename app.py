@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 from pathlib import Path
 
-Path(__file__).parent / "src"
+# Path(__file__).parent / "src"
 
 from src.utils import LoadModel
 from pipelines.prediction_pipeline import predict_model 
