@@ -21,26 +21,27 @@ def evaluate_model(model: ClassifierMixin,
     Annotated[float, "f1score"],
     Annotated[float, "recall"],
 ]:
-    """_summary_
-
+    """
+    Evaluate the performance of a model by calculating accuracy, F1 score, and recall.
     Args:
-        df (pd.DataFrame): _description_
+        model (ClassifierMixin): The trained model.
+        X_test (pd.DataFrame): The test dataset.
+        y_test (pd.DataFrame): The true labels for the test dataset.
+    Returns:
+        Tuple[float, float, float]: A tuple containing the accuracy, F1 score, and recall.
     """
     try:
         prediction = model.predict(X_test)
         accuracy_class = Accuracy()
         accuracy = accuracy_class.calculate_scores(y_test, prediction)
-        
+        mlflow.log_metric("accuracy", accuracy)
         
         f1_class = F1Score()
         f1score = f1_class.calculate_scores(y_test, prediction)
-        
-        
+        mlflow.log_metric("f1score", f1score)
+
         recall_class = Recall()
         recall = recall_class.calculate_scores(y_test, prediction)
-        
-        mlflow.log_metric("accuracy", accuracy)
-        mlflow.log_metric("f1score", f1score)
         mlflow.log_metric("recall", recall)
         
         return accuracy, f1score, recall

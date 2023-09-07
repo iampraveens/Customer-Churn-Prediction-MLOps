@@ -16,11 +16,28 @@ class DataStrategy(ABC):
     """
     @abstractmethod
     def handle_data(self, data: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
+        """
+    Abstract method to handle data.
+    Args:
+        data (pd.DataFrame): The input data.
+    Returns:
+        Union[pd.DataFrame, pd.Series]: The processed data.
+    """
         pass
     
 class DataPreProcessStrategy(DataStrategy):
-    
+    """
+    Strategy for preprocessing the data.
+    """
     def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
+        """
+    Preprocesses the input data by performing various transformations.
+    
+    Args:
+        data (pd.DataFrame): The input data to be preprocessed.
+    Returns:
+        pd.DataFrame: The preprocessed data.
+    """
         
         try:
             data = data.drop(columns=['customerID'], axis=1)
@@ -46,9 +63,18 @@ class DataPreProcessStrategy(DataStrategy):
             raise e
         
 class DataSplitStrategy(DataStrategy):
-    
+    """
+    Strategy for splitting data.
+    """
     def handle_data(self, data: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
-        
+        """
+    Split the given data into train and test sets and return the splitted sets.
+    
+    Args:
+        data (pd.DataFrame): The input data to be splitted.
+    Returns:
+        Tuple[pd.DataFrame, pd.DataFrame, pd.Series, pd.Series]: The splitted train and test sets.
+    """
         try:
             X = data.drop(columns=['Churn'], axis=1)
             y = data['Churn']
@@ -62,11 +88,25 @@ class DataSplitStrategy(DataStrategy):
 class DataBalanceStrategy(DataStrategy):
     
     def __init__(self, X_train, y_train):
+        """
+        Initializes a new instance of the DataBalanceStrategy class.
+        
+        Args:
+            X_train: The training features.
+            y_train: The training labels.
+        """
         self.X_train = X_train
         self.y_train = y_train
     
     def handle_data(self, data: pd.DataFrame) -> Union[pd.DataFrame, pd.Series]:
-        
+        """
+    Balances the data using SMOTEENN algorithm.
+    
+    Args:
+        data (pd.DataFrame): The input data to be balanced. 
+    Returns:
+        Union[pd.DataFrame, pd.Series]: The balanced data.
+    """
         try:
             smoteen = SMOTEENN()
             X_train, y_train = smoteen.fit_resample(self.X_train, self.y_train)
@@ -78,13 +118,27 @@ class DataBalanceStrategy(DataStrategy):
             raise e
         
 class DataCleaning:
-    
+    """
+    Class for cleaning data using a specified strategy.
+    """
     def __init__(self, data: pd.DataFrame, strategy: DataStrategy):
+        """
+        Initializes a new instance of the DataCleaning class.
+        
+        Args:
+            data (pd.DataFrame): The input data to be cleaned.
+            strategy (DataStrategy): The strategy for cleaning the data.
+        """
         self.data = data
         self.strategy = strategy
         
     def handle_data(self) -> Union[pd.DataFrame, pd.Series]:
+        """
+        Handles the data cleaning using the specified strategy.
         
+        Returns:
+            Union[pd.DataFrame, pd.Series]: The cleaned data.
+        """
         try: 
             return self.strategy.handle_data(self.data)
         

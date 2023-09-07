@@ -10,7 +10,13 @@ from sklearn.model_selection import GridSearchCV
 from xgboost import XGBClassifier
 
 class Model(ABC):
-    
+    """
+        Abstract method for training the model.
+
+        Args:
+            X_train: The input features for training.
+            y_train: The target labels for training.
+        """
     @abstractmethod
     def train(self, X_train, y_train):
         pass
@@ -33,11 +39,21 @@ class RandomForestClassifier_Model(Model):
     
     def train(self, X_train, y_train, criterion: str, max_depth: int, 
               max_features: str, verbose: int, n_estimators: int, n_jobs: int, **kwargs):
+        """
+        Train the Decision Tree Classifier model.
+
+        Args:
+            X_train: The input features for training.
+            y_train: The target labels for training.
+
+        Returns:
+            DecisionTreeClassifier: The trained Decision Tree Classifier model.
+        """
         
         try:
             rf = RandomForestClassifier(criterion=criterion, 
                                         max_depth=max_depth, 
-                                        max_features=max_features, 
+                                         max_features=max_features, 
                                         verbose=verbose, 
                                         n_estimators=n_estimators, n_jobs=n_jobs)
             rf.fit(X_train, y_train)
@@ -45,6 +61,8 @@ class RandomForestClassifier_Model(Model):
             # fim = pd.Series(rf.feature_importances_, index= X_train.columns)
             # print(fim.sort_values(ascending=False))
             mlflow.log_param('criterion', criterion)
+            mlflow.log_param('max_depth', max_depth)
+            mlflow.log_param('max_features', max_features)
             return rf
         except Exception as e:
             logging.error(f"Error in training model {e}")
@@ -55,7 +73,21 @@ class GridSearchCV_Model(Model):
     def train(self, X_train, y_train, estimator,
               scoring: str, cv: int, verbose: int, 
               n_jobs: int, **kwargs):
+        """
+        Train the GridSearchCV model.
 
+        Args:
+            X_train: The input features for training.
+            y_train: The target labels for training.
+            estimator: The base estimator to be used in GridSearchCV.
+            scoring: The scoring metric to optimize.
+            cv: The number of cross-validation folds.
+            verbose: Verbosity level (0: silent, 1: progress bar, 2: one line per fit).
+            n_jobs: The number of jobs to run in parallel.
+
+        Returns:
+            GridSearchCV: The trained GridSearchCV model.
+        """
         try:
             param_grid_dict = {
                                 "DecisionTreeClassifier": {
@@ -97,6 +129,8 @@ class GridSearchCV_Model(Model):
                               verbose=verbose, n_jobs=n_jobs)
             gs.fit(X_train, y_train)
             logging.info(f"Model training completed")
+            mlflow.log_param("model", estimator)
+            mlflow.log_param("scaoring", scoring)
             # print(gs.best_score_)
             return gs
         except Exception as e:
@@ -110,7 +144,25 @@ class GradientBoostingClassifier_Model(Model):
               n_estimators: int, learning_rate: float, 
               min_samples_leaf: int, max_leaf_nodes: int, 
               min_samples_split: int, **kwargs):
-        
+        """
+        Train the Gradient Boosting Classifier model.
+
+        Args:
+            X_train: The input features for training.
+            y_train: The target labels for training.
+            criterion: The function to measure the quality of a split.
+            max_depth: The maximum depth of the individual regression estimators.
+            max_features: The number of features to consider when looking for the best split.
+            verbose: Verbosity level (0: no output, 1: print progress).
+            n_estimators: The number of boosting stages to perform.
+            learning_rate: Learning rate shrinks the contribution of each tree.
+            min_samples_leaf: The minimum number of samples required to be at a leaf node.
+            max_leaf_nodes: The maximum number of leaf nodes in the trees.
+            min_samples_split: The minimum number of samples required to split an internal node.
+
+        Returns:
+            GradientBoostingClassifier: The trained Gradient Boosting Classifier model.
+        """
         try:
             gb = GradientBoostingClassifier(criterion=criterion, 
                                             max_depth=max_depth, 
@@ -124,6 +176,9 @@ class GradientBoostingClassifier_Model(Model):
             logging.info(f"Model training completed")
             # fim = pd.Series(gb.feature_importances_, index= X_train.columns)
             # print(fim.sort_values(ascending=False))
+            mlflow.log_param('criterion', criterion)
+            mlflow.log_param('max_depth', max_depth)
+            mlflow.log_param('max_features', max_features)
             return gb
         except Exception as e:
             logging.error(f"Error in training model {e}")
@@ -132,7 +187,17 @@ class GradientBoostingClassifier_Model(Model):
 class XGBoost_Model(Model):
     
     def train(self, X_train, y_train, **kwargs):
-
+        """
+    Trains a model using XGBoost classifier.
+    Args:
+        X_train (array-like): The input features for training.
+        y_train (array-like): The target labels for training.
+        **kwargs: Additional keyword arguments.
+    Returns:
+        XGBClassifier: The trained XGBoost classifier.
+    Raises:
+        Exception: If there is an error in training the model.
+    """
         try:
             dt = XGBClassifier()
             dt.fit(X_train, y_train)

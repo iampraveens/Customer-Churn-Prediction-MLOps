@@ -5,7 +5,7 @@ from steps.load_data import load_df
 from steps.clean_data import clean_df
 from steps.model_train import train_model
 from steps.model_evaluate import evaluate_model
-from src.utils import get_data_for_test
+from steps.save_model import get_data_for_test
 
 
 class DeploymentTriggerConfig():

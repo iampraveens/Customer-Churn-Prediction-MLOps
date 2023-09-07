@@ -24,12 +24,20 @@ def train_model(
     y_test: pd.DataFrame,
     config: ModelNameConfig,
 ) -> ClassifierMixin:
-    """_summary_
-
-    Args:
-        df (pd.DataFrame): _description_
     """
-    
+    Trains a machine learning model based on the given configuration.
+    Args:
+        X_train (pd.DataFrame): Training data features.
+        X_test (pd.DataFrame): Testing data features.
+        y_train (pd.DataFrame): Training data labels.
+        y_test (pd.DataFrame): Testing data labels.
+        config (ModelNameConfig): Configuration object specifying the model name.
+    Returns:
+        ClassifierMixin: Trained machine learning model.
+    Raises:
+        ValueError: If the specified model name is not supported.
+        Exception: If any error occurs during training.
+    """
     try:
         model = None
         if config.model_name == 'DecisionTree':

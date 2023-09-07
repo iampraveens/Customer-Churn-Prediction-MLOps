@@ -1,11 +1,10 @@
 import logging
-
 import pandas as pd
-# from zenml import step
+
 
 class LoadData:
     """
-    Loading data from data_path
+    Load data from the specified data path.
     """
     def __init__(self, data_path: str):
         """
@@ -16,21 +15,24 @@ class LoadData:
         
     def get_data(self):
         """
-        Loading data from data_path
+        Load data from the specified data path.
+        
+        Returns:
+        A pandas DataFrame containing the loaded data.
         """
         logging.info(f"Loading data from {self.data_path}")
         return pd.read_csv(self.data_path)
 
-# @step
+
 def load_df(data_path: str) -> pd.DataFrame:
     """
-    Load the data from data_path and convert to a dataframe
+    Load the data from data_path and convert it to a pandas DataFrame.
     
     Args:
-        data_path (str): path to the data
+        data_path (str): Path to the data file.
         
     Returns:
-        pd.DataFrame: the loaded data
+        pd.DataFrame: The loaded data as a DataFrame.
     """
     try:
         load_data = LoadData(data_path)

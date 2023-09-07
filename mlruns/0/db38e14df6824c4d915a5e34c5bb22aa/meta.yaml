@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/sprav/Pictures/Customer%20Churn%20Prediction/mlruns/0/db38e14df6824c4d915a5e34c5bb22aa/artifacts
+end_time: 1693959639819
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: db38e14df6824c4d915a5e34c5bb22aa
+run_name: ambitious-skink-813
+run_uuid: db38e14df6824c4d915a5e34c5bb22aa
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1693959639627
+status: 3
+tags: []
+user_id: sprav
