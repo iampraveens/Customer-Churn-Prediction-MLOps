@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 import sys
 
-from ..src.utils import LoadModel
+from utils import LoadModel
 from pipelines.prediction_pipeline import predict_model 
 
 sys.path.append("..")
