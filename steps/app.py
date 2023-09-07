@@ -7,8 +7,8 @@ import sys
 from src.utils import LoadModel
 from pipelines.prediction_pipeline import predict_model 
 
-sys.path.append("/src/")
-sys.path.append("/pipelines/")
+sys.path.append("..")
+sys.path.append("../src/")
 
 image = Image.open(r'C:\Users\sprav\Pictures\Customer Churn Prediction\assets\telco.png')
 page_title = 'Telcom Churn Prediction'
