@@ -4,15 +4,15 @@ from urllib.parse import urlparse
 
 if __name__ == "__main__":
     
-    with mlflow.start_run():
-        remote_server_uri = "https://dagshub.com/iampraveens/mlflow-experiment-tracking.mlflow"
+    with mlflow.start_run(nested=True):
+        remote_server_uri = "https://dagshub.com/iampraveens/Customer-Churn-Prediction-MLOps.mlflow"
         mlflow.set_tracking_uri(remote_server_uri)
         tracking_url_store_type = urlparse(mlflow.get_tracking_uri()).scheme
         
         model = train_pipeline(r"C:\Users\sprav\Pictures\Customer Churn Prediction\data\telcoChurn.csv")
         
         if tracking_url_store_type != "file":
-            mlflow.sklearn.log_model(model, "model", registered_model_name="RandomForest")
+            mlflow.sklearn.log_model(model, "model", registered_model_name="RandomForestClassifier")
         else:
             mlflow.sklearn.log_model(model, "model")
             

@@ -129,8 +129,6 @@ class GridSearchCV_Model(Model):
                               verbose=verbose, n_jobs=n_jobs)
             gs.fit(X_train, y_train)
             logging.info(f"Model training completed")
-            mlflow.log_param("model", estimator)
-            mlflow.log_param("scaoring", scoring)
             # print(gs.best_score_)
             return gs
         except Exception as e:
@@ -174,11 +172,11 @@ class GradientBoostingClassifier_Model(Model):
                                             min_samples_split=min_samples_split)
             gb.fit(X_train, y_train)
             logging.info(f"Model training completed")
-            # fim = pd.Series(gb.feature_importances_, index= X_train.columns)
-            # print(fim.sort_values(ascending=False))
             mlflow.log_param('criterion', criterion)
             mlflow.log_param('max_depth', max_depth)
             mlflow.log_param('max_features', max_features)
+            # fim = pd.Series(gb.feature_importances_, index= X_train.columns)
+            # print(fim.sort_values(ascending=False))
             return gb
         except Exception as e:
             logging.error(f"Error in training model {e}")
