@@ -1,3 +1,4 @@
+import os
 import logging
 import pandas as pd
 
@@ -9,7 +10,7 @@ def main():
     This function saves a trained model to a specified file path.
     """
     try:
-        file_path = r"C:\Users\sprav\Pictures\Customer Churn Prediction\saved_models\model.pkl"
+        file_path = os.path.join('saved_models', 'model.pkl')
         trained_model = predict_model()
         SaveModel(model=trained_model, save_path=file_path)
         logging.info("Model Saved Successfully")

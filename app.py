@@ -1,17 +1,19 @@
+import os
+import requests
+from io import BytesIO
+from pathlib import Path
 import streamlit as st 
 import pandas as pd
 import numpy as np
 from PIL import Image
-from pathlib import Path
+
 
 # Path(__file__).parent / "src"
 
 from src.utils import LoadModel
-from pipelines.prediction_pipeline import predict_model 
-
-
-
-image = Image.open(r'C:\Users\sprav\Pictures\Customer Churn Prediction\assets\telco.png')
+url = "https://cdn-icons-png.flaticon.com/512/9815/9815472.png"
+response = requests.get(url)
+image = Image.open(BytesIO(response.content))
 page_title = 'Telcom Churn Prediction'
 page_icon = image
 layout = 'wide'
@@ -121,7 +123,7 @@ user_input = pd.DataFrame({
     "PaymentMethod_Mailed check": [1 if PaymentMethod_Mailed_check == "Yes" else 0]
 })
     
-load_path = r'C:\Users\sprav\Pictures\Customer Churn Prediction\saved_models\model.pkl'
+load_path = os.path.join('saved_models', 'model.pkl')
 loaded_model = LoadModel(load_path=load_path)
 
 with column_1:

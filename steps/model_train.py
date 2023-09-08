@@ -1,7 +1,6 @@
 import logging
 
 import pandas as pd
-import mlflow
 # from zenml import step
 # from zenml.client import Client
 from sklearn.base import ClassifierMixin
