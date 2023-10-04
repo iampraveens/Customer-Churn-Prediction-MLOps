@@ -72,7 +72,7 @@ https://dagshub.com/iampraveens/Customer-Churn-Prediction-MLOps/experiments/
 Here I've implemented `MLFlow` to track my models on `DagsHub`. Check out using about link
 
 ## Dockerized Web App
-You can also deploy the Car Price Prediction web application using Docker. Build the Docker image and run the container:
+You can also deploy the Customer Churn Prediction web application using Docker. Build the Docker image and run the container:
 ```bash
 docker build -t your_docker_username/telcom-churn-app:latest .
 ```
