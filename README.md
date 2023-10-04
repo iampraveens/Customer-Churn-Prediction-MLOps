@@ -20,13 +20,13 @@ Telecom Churn Prediction is a machine learning project that predicts whether a c
 ## Project Structure
 The project structure is organized as follows:
 
-- `data/`: Contains the dataset (`car_data.csv`) used for training and predictions.
+- `data/`: Contains the dataset (`telcoChurn.csv`) used for training and predictions.
 - `pipelines/`: Includes ZenML pipelines for data cleaning, model training, and evaluation.
 - `steps/`: Custom Python scripts for data loading, model training, and evaluation.
 - `src/`: Source code files, including data cleaning strategies, model development, and utilities.
 - `saved_models/`: Stores trained machine learning models.
 - `utils.py`: Utility functions for model saving and loading.
-- `app.py`: Streamlit-based web application for predicting car prices.
+- `app.py`: Streamlit-based web application for predicting customer churn.
 - `requirements.txt`: Python dependencies for the project.
 - `Dockerfile`: Docker configuration for containerizing the web app.
 
