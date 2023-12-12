@@ -17,6 +17,7 @@ Telcom Churn Prediction is a machine learning project that predicts whether a cu
 ## Overview
 Telecom Churn Prediction is a machine learning project that predicts whether a customer is likely to stay with a telecom service provider or churn (cancel their subscription). It leverages data preprocessing techniques and employs an RandomForest classification model for accurate predictions. The project is organized into several modules for easy management and scalability.
 
+
 ## Project Structure
 The project structure is organized as follows:
 
